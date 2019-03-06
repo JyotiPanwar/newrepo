@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->register(\Rollbar\Laravel\RollbarServiceProvider::class);
+
     }
 
     /**

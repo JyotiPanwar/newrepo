@@ -43,5 +43,9 @@ return [
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
     ],
+    'rollbar' => [
+        'access_token' => env('ROLLBAR_TOKEN'),
+        'level' => env('ROLLBAR_LEVEL'),
+    ],
 
 ];
