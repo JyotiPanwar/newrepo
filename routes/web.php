@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/imageform', 'ImgController@index')->name('image');
+Route::post('/imageform', 'ImgController@uploadImg')->name('imageupload');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
