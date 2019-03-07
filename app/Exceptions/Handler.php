@@ -34,7 +34,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        \Log::debug('Test debug message');
+        \Log::debug($exception);
         parent::report($exception);
     }
 
