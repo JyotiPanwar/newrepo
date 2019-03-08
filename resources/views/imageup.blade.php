@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-12">
             @if (Session::has('imgname'))
-               <div class="alert alert-info">Original Image: <img src="https://s3.ap-south-1.amazonaws.com/ucreate-demo-clone/{{Session::get('imgname')}}"></div>
+               <div class="alert alert-info">Original Image: <img src="https://s3.ap-south-1.amazonaws.com/ucreate-demo-clone/jyoti/{{Session::get('imgname')}}"></div>
             @endif
         </div>
     </div>
