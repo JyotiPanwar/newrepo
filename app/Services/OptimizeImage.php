@@ -18,7 +18,7 @@ class OptimizeImage {
          return 'scaled_'.$image_name;
     }
     public function awsUpload(string $image_name){
-    	 $destinationPath='jyoti/'.$image_name;
+    	 $destinationPath='jyoti/scaled_'.$image_name;
     	 $image_data=public_path('/images/').$image_name;
     	 $storagePath = Storage::disk('s3')->put($destinationPath, file_get_contents($image_data),'public');
 		 return true;
