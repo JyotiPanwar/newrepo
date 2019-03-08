@@ -15,6 +15,7 @@ class ImgController extends Controller
     
     public function index()
     {
+       
        return view('imageup');
       
       

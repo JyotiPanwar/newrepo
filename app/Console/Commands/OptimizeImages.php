@@ -41,7 +41,7 @@ class OptimizeImages extends Command
     public function handle()
     {
         $image_info = Images::whereNull('optimized_name')->orderBy('created_at', 'DESC')->first();
-        if(isset($image_info) && count($image_info)>0){
+        if(isset($image_info)){
                 $image_name=$image_info->name;
                 $new_image=app('optimize_image')->scale($image_name,$size='400');
                 $storage_new_image=app('optimize_image')->awsUpload($new_image);
