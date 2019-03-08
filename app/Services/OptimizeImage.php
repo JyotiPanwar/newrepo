@@ -21,9 +21,7 @@ class OptimizeImage {
     	 $destinationPath='jyoti/'.$image_name;
     	 $image_data=public_path('/images/').$image_name;
     	 $storagePath = Storage::disk('s3')->put($destinationPath, file_get_contents($image_data),'public');
-
-        // $storagePath = Storage::disk('s3')->put($destinationPath, 'public');
-         return true;
+		 return true;
 
     }
 
