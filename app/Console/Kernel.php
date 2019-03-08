@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-       $schedule->command('optimize:images')
-                          ->everyMinute();
+       /*$schedule->command('optimize:images')
+                          ->everyMinute();*/
                           //->dailyAt('13:00');
     }
 

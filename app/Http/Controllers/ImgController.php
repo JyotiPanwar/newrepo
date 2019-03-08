@@ -7,6 +7,8 @@ use App\Services\OptimizeImage;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Models\Images;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class ImgController extends Controller
@@ -27,6 +29,8 @@ class ImgController extends Controller
 	        $name = time().'.'.$image->getClientOriginalExtension();
 	        $destinationPath = public_path('/images');
   		    if($image->move($destinationPath, $name)){
+              $filePath = 'images/jyoti' . $name;
+              Storage::disk('s3')->put($filePath, file_get_contents($image));
               $img = new Images;
               $img->name = $name;
               $img->save();
