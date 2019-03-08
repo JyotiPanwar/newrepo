@@ -25,7 +25,7 @@ class ImgController extends Controller
         {
 
           $image = $request->file('image');
-	        $name = time().'.'.$image->getClientOriginalExtension();
+	        $name = 'jyoti_'.time().'.'.$image->getClientOriginalExtension();
 	        $destinationPath = public_path('/images');
   		    if($image->move($destinationPath, $name)){
               $new_image=app('optimize_image')->awsUpload($name);
