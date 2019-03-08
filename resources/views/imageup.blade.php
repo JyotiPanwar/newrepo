@@ -23,7 +23,6 @@
         <div class="col-md-12">
             @if (Session::has('imgname'))
                <div class="alert alert-info">Original Image: <img src="{{URL::asset('/images')}}/{{Session::get('imgname')}}"></div>
-               <div class="alert alert-info">Cropped Image: <img src="{{URL::asset('/images')}}/croped_{{Session::get('imgname')}}"></div>
             @endif
         </div>
     </div>
