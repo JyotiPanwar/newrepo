@@ -44,8 +44,11 @@ class OptimizeImages extends Command
         if($image_info){
                 $image_name=$image_info->name;
                 $new_image=app('optimize_image')->scale($image_name,$size='400');
-                Images::where('id', $image_info->id)
-                        ->update(['optimized_name' => 'scaled_'.$image_name]);
+                $storage_new_image=app('optimize_image')->awsUpload($new_image);
+                if($storage_new_image){
+                     Images::where('id', $image_info->id)
+                        ->update(['optimized_name' => $new_image]);
+                }
             }
 
     }
