@@ -40,11 +40,11 @@ class OptimizeImages extends Command
      */
     public function handle()
     {
-        $image_info = Images::where('optimize_image','')->orderBy('created_at', 'DESC')->first();
+        $image_info = Images::whereNull('optimized_name')->orderBy('created_at', 'DESC')->first();
         $image_name=$image_info->name;
         $new_image=app('optimize_image')->scale($image_name,$size='400');
         Images::where('id', $image_info->id)
-                ->update(['optimize_image' => 'scaled_'.$image_name]);
+                ->update(['optimized_name' => 'scaled_'.$image_name]);
 
     }
 }

@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
     {
        $schedule->command('optimize:images')
                           ->everyMinute();
+                          //->dailyAt('13:00');
     }
 
     /**
