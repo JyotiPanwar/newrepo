@@ -29,8 +29,8 @@ class ImgController extends Controller
 	        $name = time().'.'.$image->getClientOriginalExtension();
 	        $destinationPath = public_path('/images/');
   		    if($image->move($destinationPath, $name)){
-/*              $new_image=app('optimize_image')->awsUpload($name,$img_type='main');
-*/            $img = new Images;
+              $new_image=app('optimize_image')->awsUpload($name);
+              $img = new Images;
               $img->name = $name;
               $img->save();
            		return back()->with('imgname',$name);
