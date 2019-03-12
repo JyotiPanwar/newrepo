@@ -15,7 +15,7 @@ class OptimizeImage {
     	 $destinationPath=public_path('/images/');
          exec('ffmpeg -i '.$sourcePath.''.$image_name.' -vf scale='.$size.':-1 '.$destinationPath.'scaled_'.$image_name);
          $scaledUpload=$this->awsUpload('scaled_'.$image_name);
-         return $scaledUpload;
+         return 'scaled_'.$image_name;
         
     }
     public function awsUpload(string $image_name){    	 

@@ -3,8 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\Images;
 use App\Services\OptimizeImage;
+use App\Repositories\Image\ImageRepository;
+
 
 
 class OptimizeImages extends Command
@@ -15,6 +16,8 @@ class OptimizeImages extends Command
      * @var string
      */
     protected $signature = 'optimize:images';
+    protected $model;
+
 
     /**
      * The console command description.
@@ -31,6 +34,8 @@ class OptimizeImages extends Command
     public function __construct()
     {
         parent::__construct();
+        $this->model = new ImageRepository();
+
     }
 
     /**
@@ -40,13 +45,14 @@ class OptimizeImages extends Command
      */
     public function handle()
     {
-        $image_info = Images::whereNull('optimized_name')->orderBy('created_at', 'DESC')->first();
+        $image_info =$this->model->findLatest();
         if(isset($image_info)){
             $image_name=$image_info->name;
             $new_image=app('optimize_image')->scale($image_name,$size='400');
             if($new_image){
-                 Images::where('id', $image_info->id)
-                    ->update(['optimized_name' => $new_image]);
+                $image_info->new_image =$new_image;
+                $this->model->update($image_info);
+                 
             }
         }
 
