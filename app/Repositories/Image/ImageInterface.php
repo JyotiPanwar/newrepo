@@ -6,13 +6,13 @@ namespace App\Repositories\Image;
 interface ImageInterface {
 
 
-    public function create($param);
+    public function create(array $param);
 
 
     public function findLatest();
 
 
-    public function update($id);
+    public function update(array $param);
     
-    public function delete($id);
+    public function delete(int $id);
 }

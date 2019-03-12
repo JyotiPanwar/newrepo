@@ -19,7 +19,7 @@ class ImgController extends Controller
     }
     public function index()
     {
-       
+
        return view('imageup');     
       
     }
@@ -31,14 +31,13 @@ class ImgController extends Controller
           $image = $request->file('image');
 	        $name = time().'.'.$image->getClientOriginalExtension();
 	        $destinationPath = public_path('/images/');
-  		    if($image->move($destinationPath, $name)){
-              $new_image=app('optimize_image')->awsUpload($name);
-              $request->name=$name;
-              $this->model->create($request);
-             	return back()->with('imgname',$name);
+    		    if($image->move($destinationPath, $name)){
+                $new_image=app('optimize_image')->awsUpload($name);
+                $request->name=$name;
+                $this->model->create($request);
+               	return back()->with('imgname',$name);
 
-  		    }
+    		    }
         }
     }    
-
 }

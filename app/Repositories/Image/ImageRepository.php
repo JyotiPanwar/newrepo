@@ -13,7 +13,7 @@ class ImageRepository implements ImageInterface
      *  Return the model
      */
  
-    public function create($param)
+    public function create(array $param)
     {
         $name=$param->name;
         $img = new Images;
@@ -26,12 +26,12 @@ class ImageRepository implements ImageInterface
        return $image_info;
 
     }
-    public function update($param)
+    public function update(array $param)
     {
        Images::where('id', $param->id)
                     ->update(['optimized_name' => $param->new_image]);
     }
-    public function delete($param)
+    public function delete(int $param)
     {
        Images::where('id', $param->id)->delete();
     }
