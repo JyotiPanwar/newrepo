@@ -13,11 +13,11 @@
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware('verified');
+});
 
 Route::get('/imageform', 'ImgController@index')->name('image');
 Route::post('/imageform', 'ImgController@uploadImg')->name('imageupload');
 
-Auth::routes(['verify'=>true]);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
