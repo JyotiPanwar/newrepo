@@ -46,12 +46,14 @@ class OptimizeImages extends Command
     public function handle()
     {
         $image_info =$this->model->findLatest();
+        $newArr=array();
         if(isset($image_info)){
             $image_name=$image_info->name;
             $new_image=app('optimize_image')->scale($image_name,$size='400');
             if($new_image){
-                $image_info->new_image =$new_image;
-                $this->model->update($image_info);
+                $newArr['id']=$image_info->id;
+                $newArr['new_image']=$new_image;
+                $this->model->update($newArr);
                  
             }
         }

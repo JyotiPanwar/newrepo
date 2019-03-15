@@ -29,8 +29,8 @@ class ImageRepository implements ImageInterface
     }
     public function update(array $param)
     {
-       Images::where('id', $param->id)
-                    ->update(['optimized_name' => $param->new_image]);
+       Images::where('id', $param['id'])
+                    ->update(['optimized_name' => $param['new_image']]);
     }
     public function delete(int $param)
     {
