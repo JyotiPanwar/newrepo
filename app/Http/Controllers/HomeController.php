@@ -30,8 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $allImages=$this->model->fetchAll();     
-      
-       return view('home')->with(['allImages'=>$allImages,'user'=>$user]);
+        $allImages=$this->model->fetchAll();         
+        return view('home')->with(['allImages'=>$allImages,'user'=>$user]);
     }
 }
