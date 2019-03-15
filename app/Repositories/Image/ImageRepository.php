@@ -15,10 +15,11 @@ class ImageRepository implements ImageInterface
  
     public function create(array $param)
     {
-        $name=$param->name;
+        
         $img = new Images;
-              $img->name = $name;
-              $img->save();
+        $img->name = $param['name'];
+        $img->user_id = $param['user_id'];
+        $img->save();
     }
     public function findLatest()
     {
@@ -34,5 +35,10 @@ class ImageRepository implements ImageInterface
     public function delete(int $param)
     {
        Images::where('id', $param->id)->delete();
+    }
+    public function fetchAll()
+    {
+       $imageArray=Images::get();
+       return $imageArray;
     }
 }

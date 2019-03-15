@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Image\ImageRepository;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    protected $model;
+
     /**
      * Create a new controller instance.
      *
@@ -14,6 +18,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->model = new ImageRepository();
+
     }
 
     /**
@@ -23,6 +29,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        $allImages=$this->model->fetchAll();     
+      
+       return view('home')->with(['allImages'=>$allImages,'user'=>$user]);
     }
 }

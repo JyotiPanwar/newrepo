@@ -13,8 +13,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    @if($allImages)   
+                    @foreach($allImages as $image) 
+                                                         
+                          @if($user->can('update', $image))
+                                <p>You can update image : {{$image->id}}</p>
+                          @else
+                                <p>You can not update image : {{$image->id}}</p>
+                          @endif
+                    @endforeach
+                     You are logged in!
+                    @endif
+                   
                 </div>
             </div>
         </div>
